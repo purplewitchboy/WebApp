@@ -1,0 +1,36 @@
+﻿@model IList<GroupWebApp.Storage.Entities.Recipe>
+    
+    <h1>Рецепты</h1>
+
+@foreach (var recipe in Model)
+{ 
+     <a asp-controller="SelectedRecipe" asp-action="Main" asp-route-id="@recipe.Id" class="category_button">@recipe.Name</a>
+}
+
+@{
+   <form asp-action="OnPost" asp-controller="Recipes" method="post" enctype="multipart/form-data">
+    <p>
+        <label>Имя</label>
+        <input name="Name" class="form-control" />
+    </p>
+    <p>
+        <label>Картинка</label>
+        <input name="Img" type="file" class="form-control" />
+    </p>
+    <p>
+        <label>Описание</label>
+        <input name="desc" class="form-control" />
+    </p>
+    <p>
+        <label>IdПодкатегории</label>
+        <input name="SubCategoryId" class="form-control" />
+    </p>
+    <p>
+        <label>Национальная кухня</label>
+        <input name="NationalKitchenId" class="form-control" />
+    </p>
+    <p>
+        <input type="submit" value="Добавить" />
+    </p>
+</form>
+}

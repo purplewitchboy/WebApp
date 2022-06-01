@@ -1,0 +1,8 @@
+﻿@model IList<GroupWebApp.Storage.Entities.TypeOfPreparation>
+    
+    <h1>Типы Приготовления</h1>
+
+@foreach (var top in Model){
+    <a asp-controller="Recipes" asp-action="SortTOP" asp-route-id="@top.Id" class="button">@top.NameOfType</a> 
+    
+}

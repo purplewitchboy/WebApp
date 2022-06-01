@@ -1,0 +1,8 @@
+﻿@model IList<GroupWebApp.Storage.Entities.NationalKitchen>
+    
+    <h1>Национальные Кухни</h1>
+
+@foreach (var nk in Model){
+    <a asp-controller="Recipes" asp-action="SortNK" asp-route-id="@nk.Id" class="category_button">@nk.KitchenName</a> 
+    
+}

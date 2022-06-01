@@ -1,0 +1,8 @@
+﻿@model IList<GroupWebApp.Storage.Entities.SubCategory>
+    
+    <h1>Подкатегории</h1>
+
+@foreach (var subcategory in Model)
+{ 
+    <a asp-controller="Recipes" asp-route-id="@subcategory.Id" class="category_button">@subcategory.NameSubCategory</a>
+}
