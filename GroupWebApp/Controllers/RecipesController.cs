@@ -11,9 +11,8 @@ namespace GroupWebApp.Controllers
     {
         private readonly IRecipeManager _manager;
         RecipeContext _context;
-        IWebHostEnvironment _appEnvironment;
-
-        public RecipesController(IRecipeManager manager, RecipeContext context, IWebHostEnvironment appEnvironment)
+        
+        public RecipesController(IRecipeManager manager, RecipeContext context)
         {
             _manager = manager;
             _context = context;
