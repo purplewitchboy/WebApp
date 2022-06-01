@@ -3,8 +3,6 @@ using GroupWebApp.Logic.Recipes;
 using GroupWebApp.Storage.Entities;
 using GroupWebApp.Models;
 
-
-
 namespace GroupWebApp.Controllers
 {
     public class RecipesController : Controller
@@ -16,39 +14,31 @@ namespace GroupWebApp.Controllers
         {
             _manager = manager;
             _context = context;
-
         }
-
         public async Task<IActionResult> Main(int id)
         {
             var recipes = await _manager.GetAll(id);
 
             return View(recipes);
         }
-
         public async Task<IActionResult> SortNK(int id)
         {
             var recipes = await _manager.SortByNationalKitchen(id);
 
             return View(recipes);
         }
-
         public async Task<IActionResult> SortTOP(int id)
         {
             var recipes = await _manager.SortByTypeOfPreparation(id);
 
             return View(recipes);
         }
-
         public async Task<IActionResult> SortByIngredient(int id)
         {
             var recipes = await _manager.SortByIngredient(id);
 
             return View(recipes);
         }
-
-
-
         [HttpGet]
         [Route("recipes")]
         public Task<IList<Recipe>> GetAll(CreateRecipeRequest request) => _manager.GetAll(request.SubCategoryId);
@@ -62,21 +52,18 @@ namespace GroupWebApp.Controllers
         [HttpGet]
         public Task<IList<Recipe>> SortByIngredient(CreateRecipeRequest request) => _manager.SortByIngredient(request.IngredientId);
 
-
         [HttpPost]
         [Route("recipes")]
-        public IActionResult OnPost([FromForm] CreateRecipeRequest pvm)
+        public IActionResult OnPost([FromForm] CreateRecipeRequest request)
         {
-            Recipe recipe = new Recipe { Name = pvm.Name, SubCategoryId = pvm.SubCategoryId, desc = pvm.Desc };
-            if (pvm.Img != null)
+            Recipe recipe = new Recipe { Name = request.Name, SubCategoryId = request.SubCategoryId, desc = request.Desc };
+            if (request.Img != null)
             {
                 byte[] imageData = null;
-                // считываем переданный файл в массив байтов
-                using (var binaryReader = new BinaryReader(pvm.Img.OpenReadStream()))
+                using (var binaryReader = new BinaryReader(request.Img.OpenReadStream()))
                 {
-                    imageData = binaryReader.ReadBytes((int)pvm.Img.Length);
+                    imageData = binaryReader.ReadBytes((int)request.Img.Length);
                 }
-                // установка массива байтов
                 recipe.Pic = imageData;
             }
             _context.Recipes.Add(recipe);
