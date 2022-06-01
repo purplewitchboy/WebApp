@@ -11,9 +11,8 @@ namespace GroupWebApp.Controllers
     {
         private readonly IRecipeManager _manager;
         RecipeContext _context;
-        IWebHostEnvironment _appEnvironment;
-
-        public RecipesController(IRecipeManager manager, RecipeContext context, IWebHostEnvironment appEnvironment)
+        
+        public RecipesController(IRecipeManager manager, RecipeContext context)
         {
             _manager = manager;
             _context = context;
@@ -71,7 +70,7 @@ namespace GroupWebApp.Controllers
             Recipe recipe = new Recipe { Name = pvm.Name, SubCategoryId = pvm.SubCategoryId, desc = pvm.Desc };
             if (pvm.Img != null)
             {
-                byte[]? imageData = null;
+                byte[] imageData = null;
                 // считываем переданный файл в массив байтов
                 using (var binaryReader = new BinaryReader(pvm.Img.OpenReadStream()))
                 {

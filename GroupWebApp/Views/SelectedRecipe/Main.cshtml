@@ -1,12 +1,11 @@
 ﻿@model IList<GroupWebApp.Storage.Entities.Recipe>
-    
-    <h1>Рецепты</h1>
 
-@foreach (var recipe in Model)
-{ 
-     <p>@recipe.Name</p>
-     <img src="@System.Convert.ToBase64String(@recipe.Pic)" />
-    @*  <img src="@recipe.Pic" />*@
-     <p>@recipe.desc</p>
+@{
+
+foreach(var recipe in Model)
+{
+<h1>@recipe.Name</h1>
+<p class="Recipe__text"> @Html.Raw("<img style='width:500px; border-radius: 10px;height:410px; 'src=\"data:image/jpeg;base64,"+Convert.ToBase64String((recipe.Pic))+"\"/>")@recipe.desc</p>
+
 }
- 
+}
