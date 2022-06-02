@@ -39,6 +39,7 @@ namespace GroupWebApp.Controllers
 
             return View(recipes);
         }
+
         [HttpGet]
         [Route("recipes")]
         public async Task<IList<Recipe>> GetAll(CreateRecipeRequest request) => await _manager.GetAll(request.SubCategoryId);
