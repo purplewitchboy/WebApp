@@ -1,5 +1,4 @@
-﻿using Microsoft.AspNetCore.Http;
-namespace GroupWebApp.Models
+﻿namespace GroupWebApp.Models
 {
     public class CreateRecipeRequest
     {

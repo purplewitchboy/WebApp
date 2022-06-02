@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-
-namespace GroupWebApp.Storage.Entities
+﻿namespace GroupWebApp.Storage.Entities
 {
     public class Category
     {

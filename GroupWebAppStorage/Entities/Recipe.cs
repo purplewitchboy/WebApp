@@ -1,7 +1,4 @@
-﻿using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations.Schema;
-
-namespace GroupWebApp.Storage.Entities
+﻿namespace GroupWebApp.Storage.Entities
 {
     public class Recipe
     {
