@@ -23,10 +23,10 @@ namespace GroupWebApp.Controllers
 
         [HttpGet]
         [Route("nationalkitchen")]
-        public Task<IList<NationalKitchen>> GetAll() => _manager.GetAll();
+        public async Task<IList<NationalKitchen>> GetAll() => await _manager.GetAll();
 
         [HttpPut]
         [Route("nationalkitchen")]
-        public Task Create([FromBody] CreateNationalKitchenRequest request) => _manager.Create(request.Name);
+        public async Task Create([FromBody] CreateNationalKitchenRequest request) => await _manager.Create(request.Name);
     }
 }

@@ -41,20 +41,20 @@ namespace GroupWebApp.Controllers
         }
         [HttpGet]
         [Route("recipes")]
-        public Task<IList<Recipe>> GetAll(CreateRecipeRequest request) => _manager.GetAll(request.SubCategoryId);
+        public async Task<IList<Recipe>> GetAll(CreateRecipeRequest request) => await _manager.GetAll(request.SubCategoryId);
 
         [HttpGet]
-        public Task<IList<Recipe>> SortByNationalKitchen(CreateRecipeRequest request) => _manager.SortByNationalKitchen(request.NationalKitchenId);
+        public async Task<IList<Recipe>> SortByNationalKitchen(CreateRecipeRequest request) => await _manager.SortByNationalKitchen(request.NationalKitchenId);
 
         [HttpGet]
-        public Task<IList<Recipe>> SortByTypeOfPreparation(CreateRecipeRequest request) => _manager.SortByTypeOfPreparation(request.TypeOfPreparationId);
+        public async Task<IList<Recipe>> SortByTypeOfPreparation(CreateRecipeRequest request) => await _manager.SortByTypeOfPreparation(request.TypeOfPreparationId);
 
         [HttpGet]
-        public Task<IList<Recipe>> SortByIngredient(CreateRecipeRequest request) => _manager.SortByIngredient(request.IngredientId);
+        public async Task<IList<Recipe>> SortByIngredient(CreateRecipeRequest request) => await _manager.SortByIngredient(request.IngredientId);
 
         [HttpPost]
         [Route("recipes")]
-        public IActionResult OnPost([FromForm] CreateRecipeRequest request)
+        public async Task<IActionResult> OnPost([FromForm] CreateRecipeRequest request)
         {
             Recipe recipe = new Recipe { Name = request.Name, SubCategoryId = request.SubCategoryId, desc = request.Desc };
             if (request.Img != null)
@@ -67,7 +67,7 @@ namespace GroupWebApp.Controllers
                 recipe.Pic = imageData;
             }
             _context.Recipes.Add(recipe);
-            _context.SaveChanges();
+            await _context.SaveChangesAsync();
             return RedirectToAction("Main");
         }
     }

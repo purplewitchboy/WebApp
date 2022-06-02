@@ -24,10 +24,10 @@ namespace GroupWebApp.Controllers
 
         [HttpGet]
         [Route("ingredients")]
-        public Task<IList<ByIngredient>> GetAll() => _manager.GetAll();
+        public async Task<IList<ByIngredient>> GetAll() => await _manager.GetAll();
 
         [HttpPut]
         [Route("ingredients")]
-        public Task Create([FromBody] CreateIngredientRequest request) => _manager.Create(request.Name);
+        public async Task Create([FromBody] CreateIngredientRequest request) => await _manager.Create(request.Name);
     }
 }
