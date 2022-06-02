@@ -23,10 +23,10 @@ namespace GroupWebApp.Controllers
 
         [HttpGet]
         [Route("typesofpreparation")]
-        public Task<IList<TypeOfPreparation>> GetAll() => _manager.GetAll();
+        public async Task<IList<TypeOfPreparation>> GetAll() => await _manager.GetAll();
 
         [HttpPut]
         [Route("typesofpreparation")]
-        public Task Create([FromBody] CreateTypeOfPreparationRequest request) => _manager.Create(request.Name);
+        public async Task Create([FromBody] CreateTypeOfPreparationRequest request) => await _manager.Create(request.Name);
     }
 }

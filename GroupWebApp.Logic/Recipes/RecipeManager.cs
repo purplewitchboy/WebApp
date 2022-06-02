@@ -14,7 +14,6 @@ namespace GroupWebApp.Logic.Recipes
 
         public async Task<IList<Recipe>> GetInfo(int id) => await _context.Recipes.Where(x => x.Id==id).ToListAsync();
 
-
         public async Task<IList<Recipe>> SortByNationalKitchen(int id) => await _context.Recipes.Where(x => x.NationalKitchenId==id).ToListAsync();
 
         public async Task<IList<Recipe>> SortByTypeOfPreparation(int id) => await _context.Recipes.Where(x => x.TypeOfPreparationId==id).ToListAsync();

@@ -23,10 +23,10 @@ namespace GroupWebApp.Controllers
 
         [HttpGet]
         [Route("categories")]
-        public Task<IList<Category>> GetAll() => _manager.GetAll();
+        public async Task<IList<Category>> GetAll() => await _manager.GetAll();
 
         [HttpPut]
         [Route("categories")]
-        public Task Create([FromBody] CreateCategoryRequest request) => _manager.Create(request.Name);
+        public async Task Create([FromBody] CreateCategoryRequest request) => await _manager.Create(request.Name);
     }
 }

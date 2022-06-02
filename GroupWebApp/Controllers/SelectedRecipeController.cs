@@ -21,6 +21,6 @@ namespace GroupWebApp.Controllers
         
         [HttpGet]
         [Route("selectedrecipe")]
-        public Task<IList<Recipe>> GetInfo(CreateRecipeRequest request) => _manager.GetInfo(request.Id);
+        public async Task<IList<Recipe>> GetInfo(CreateRecipeRequest request) => await _manager.GetInfo(request.Id);
     }
 }
